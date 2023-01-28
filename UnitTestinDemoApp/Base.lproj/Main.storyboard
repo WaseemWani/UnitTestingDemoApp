@@ -95,6 +95,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="ZwW-eI-2yM">
+                                <rect key="frame" x="162.66666666666666" y="381" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="9sy-Be-fib"/>
+                                    <constraint firstAttribute="height" constant="50" id="Pu5-p3-11j"/>
+                                </constraints>
+                            </activityIndicatorView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jdZ-Os-Dxr">
                                 <rect key="frame" x="10" y="54" width="355" height="738"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -106,10 +113,13 @@
                             <constraint firstItem="jdZ-Os-Dxr" firstAttribute="top" secondItem="nLL-BX-Iti" secondAttribute="top" constant="10" id="4iJ-cs-PaR"/>
                             <constraint firstItem="jdZ-Os-Dxr" firstAttribute="leading" secondItem="w12-dj-v67" secondAttribute="leading" constant="10" id="Rb8-3g-ZdK"/>
                             <constraint firstAttribute="trailing" secondItem="jdZ-Os-Dxr" secondAttribute="trailing" constant="10" id="Vnv-x0-Wnl"/>
+                            <constraint firstItem="ZwW-eI-2yM" firstAttribute="centerY" secondItem="w12-dj-v67" secondAttribute="centerY" id="iFV-7a-auQ"/>
+                            <constraint firstItem="ZwW-eI-2yM" firstAttribute="centerX" secondItem="w12-dj-v67" secondAttribute="centerX" id="oHf-Fe-r0Z"/>
                             <constraint firstAttribute="bottom" secondItem="jdZ-Os-Dxr" secondAttribute="bottom" constant="20" id="yYH-rg-9xc"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="loadingIndicator" destination="ZwW-eI-2yM" id="HJ5-tc-0xf"/>
                         <outlet property="tableView" destination="jdZ-Os-Dxr" id="W63-Im-cbA"/>
                     </connections>
                 </viewController>

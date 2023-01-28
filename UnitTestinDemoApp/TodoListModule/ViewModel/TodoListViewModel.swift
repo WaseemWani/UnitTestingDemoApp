@@ -14,11 +14,15 @@ enum Result {
 
 class TodoListViewModel {
     var todos: [Todo] = [Todo]()
+    let networkService: NetworkService
+    
+    init(service: NetworkService) {
+        self.networkService = service
+    }
     
     func fetchTodos(completion: @escaping (Result) -> Void) {
-        NetworkManager().fetch() { [weak self] data, error in
-            if var todosData = data {
-                todosData.removeLast(188)
+        networkService.fetch() { [weak self] data, error in
+            if let todosData = data {
                 self?.todos = todosData
                 completion(.success)
             } else if let err = error {

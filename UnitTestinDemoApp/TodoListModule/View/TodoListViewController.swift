@@ -9,12 +9,14 @@ import UIKit
 
 class TodoListViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
-    
+    @IBOutlet var loadingIndicator: UIActivityIndicatorView!
+
     var viewModel: TodoListViewModel?
         
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = TodoListViewModel()
+        viewModel = TodoListViewModel(service: NetworkManager())
         setupNavBar()
         setupTableView()
         populateData()
@@ -28,6 +30,7 @@ class TodoListViewController: UIViewController {
     }
     
     func setupTableView() {
+        tableView.isHidden = true
         let nib = UINib.init(nibName: "TodoTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "TodoTableViewCell")
         tableView.delegate = self
@@ -35,19 +38,46 @@ class TodoListViewController: UIViewController {
     }
     
     private func populateData() {
+        showHideLoadinView(shouldShow: true)
         viewModel?.fetchTodos() { [weak self] result in
             switch result {
                 case .success:
                     DispatchQueue.main.async {
+                        self?.showHideLoadinView(shouldShow: false)
+                        self?.tableView.isHidden = false
                         self?.tableView.reloadData()
                     }
                 case .failure(let error):
+                    DispatchQueue.main.async {
+                        self?.showHideLoadinView(shouldShow: false)
+                        self?.showAlert(msg: error.localizedDescription)
+                        self?.loadingIndicator.stopAnimating()
+                        self?.loadingIndicator.isHidden = true
+                    }
                     debugPrint(error)
             }
         }
     }
+    
+    private func showHideLoadinView(shouldShow: Bool) {
+        if shouldShow {
+            loadingIndicator.isHidden = false
+            loadingIndicator.startAnimating()
+        } else {
+            loadingIndicator.isHidden = true
+            loadingIndicator.stopAnimating()
+        }
+    }
+    
+    private func showAlert(msg: String) {
+        let alert = UIAlertController(title: "Oops!", message: msg, preferredStyle: .alert)
+        let retryAction = UIAlertAction(title: "Retry", style: .default) { [weak self]_ in
+            self?.populateData()
+        }
+        alert.addAction(retryAction)
+        self.present(alert, animated: true)
+    }
 }
-
 
 extension TodoListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {

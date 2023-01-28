@@ -7,14 +7,11 @@
 
 import Foundation
 
-struct Todo: Codable {
-    let userId: Int?
-    let id: Int?
-    let title: String?
-    let completed: Bool?
+protocol NetworkService {
+    func fetch(completion: @escaping ([Todo]?, Error?) -> Void)
 }
 
-class NetworkManager {
+class NetworkManager: NetworkService {
     
     func fetch(completion: @escaping ([Todo]?, Error?) -> Void) {
         guard let url = URL(string: "https://jsonplaceholder.typicode.com/todos") else {
@@ -28,7 +25,8 @@ class NetworkManager {
                 completion(nil, error)
             } else if let data = data {
                 do {
-                    let decodeData = try JSONDecoder().decode([Todo].self, from: data)
+                    var decodeData = try JSONDecoder().decode([Todo].self, from: data)
+                    decodeData.removeLast(188)
                     completion(decodeData, nil)
                 } catch (let error) {
                     completion(nil, error)
