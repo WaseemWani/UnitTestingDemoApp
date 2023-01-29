@@ -6,7 +6,7 @@
 //
 
 import Foundation
-@testable import UnitTestinDemoApp
+@testable import UnitTestingDemoApp
 
 class MockNetworkService: NetworkService {
     func fetch(completion: @escaping ([Todo]?, Error?) -> Void) {

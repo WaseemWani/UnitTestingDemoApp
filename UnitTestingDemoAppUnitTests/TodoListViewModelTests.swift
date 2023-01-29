@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import UnitTestinDemoApp
+@testable import UnitTestingDemoApp
 
 class TodoListViewModelTests: XCTestCase {
     
