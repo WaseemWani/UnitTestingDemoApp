@@ -25,6 +25,9 @@
 		8D4862012985022F00BBC54C /* TodoListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4862002985022F00BBC54C /* TodoListViewModelTests.swift */; };
 		8D48620B298505CA00BBC54C /* MockNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D48620A298505CA00BBC54C /* MockNetworkService.swift */; };
 		8D48620F2985064C00BBC54C /* MockTodoJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = 8D48620E2985064C00BBC54C /* MockTodoJSON.json */; };
+		8DC455602986EFBD00E59BA5 /* TodoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC4555F2986EFBD00E59BA5 /* TodoDetailViewController.swift */; };
+		8DC455672986F0DA00E59BA5 /* TodoDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC455662986F0DA00E59BA5 /* TodoDetailViewModel.swift */; };
+		8DC45570299AB4F200E59BA5 /* TodoDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC4556F299AB4F200E59BA5 /* TodoDetailViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +63,9 @@
 		8D4862002985022F00BBC54C /* TodoListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListViewModelTests.swift; sourceTree = "<group>"; };
 		8D48620A298505CA00BBC54C /* MockNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkService.swift; sourceTree = "<group>"; };
 		8D48620E2985064C00BBC54C /* MockTodoJSON.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MockTodoJSON.json; sourceTree = "<group>"; };
+		8DC4555F2986EFBD00E59BA5 /* TodoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailViewController.swift; sourceTree = "<group>"; };
+		8DC455662986F0DA00E59BA5 /* TodoDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailViewModel.swift; sourceTree = "<group>"; };
+		8DC4556F299AB4F200E59BA5 /* TodoDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +113,7 @@
 				8D0E66A42982EF4600FC6217 /* TodoListModule */,
 				8D0E66A12982EF0200FC6217 /* LoginModule */,
 				8D0E66642981905300FC6217 /* Main.storyboard */,
+				8DC455632986EFC200E59BA5 /* TodoDetailModule */,
 				8D0E66672981905400FC6217 /* Assets.xcassets */,
 				8D0E66692981905400FC6217 /* LaunchScreen.storyboard */,
 				8D0E666C2981905400FC6217 /* Info.plist */,
@@ -117,9 +124,10 @@
 		8D0E66782981954600FC6217 /* UnitTestingDemoAppUnitTests */ = {
 			isa = PBXGroup;
 			children = (
-				8D0E66792981954600FC6217 /* LoginViewModelUnitTests.swift */,
+				8DC4556E299AB4D500E59BA5 /* TodoDetailModule */,
+				8DC4556B299AB39300E59BA5 /* TodoListModuleTests */,
+				8DC4556A299AB37F00E59BA5 /* LoginModuleTests */,
 				8D0E667B2981954600FC6217 /* Info.plist */,
-				8D4862002985022F00BBC54C /* TodoListViewModelTests.swift */,
 				8D48620A298505CA00BBC54C /* MockNetworkService.swift */,
 				8D48620E2985064C00BBC54C /* MockTodoJSON.json */,
 			);
@@ -202,6 +210,39 @@
 				8D4861F4298501A200BBC54C /* TodoListModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		8DC455632986EFC200E59BA5 /* TodoDetailModule */ = {
+			isa = PBXGroup;
+			children = (
+				8DC4555F2986EFBD00E59BA5 /* TodoDetailViewController.swift */,
+				8DC455662986F0DA00E59BA5 /* TodoDetailViewModel.swift */,
+			);
+			path = TodoDetailModule;
+			sourceTree = "<group>";
+		};
+		8DC4556A299AB37F00E59BA5 /* LoginModuleTests */ = {
+			isa = PBXGroup;
+			children = (
+				8D0E66792981954600FC6217 /* LoginViewModelUnitTests.swift */,
+			);
+			path = LoginModuleTests;
+			sourceTree = "<group>";
+		};
+		8DC4556B299AB39300E59BA5 /* TodoListModuleTests */ = {
+			isa = PBXGroup;
+			children = (
+				8D4862002985022F00BBC54C /* TodoListViewModelTests.swift */,
+			);
+			path = TodoListModuleTests;
+			sourceTree = "<group>";
+		};
+		8DC4556E299AB4D500E59BA5 /* TodoDetailModule */ = {
+			isa = PBXGroup;
+			children = (
+				8DC4556F299AB4F200E59BA5 /* TodoDetailViewModelTests.swift */,
+			);
+			path = TodoDetailModule;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -307,9 +348,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D0E668629819CEF00FC6217 /* LoginViewModel.swift in Sources */,
+				8DC455672986F0DA00E59BA5 /* TodoDetailViewModel.swift in Sources */,
 				8D0E66632981905300FC6217 /* LoginViewController.swift in Sources */,
 				8D0E66962982AF0A00FC6217 /* TodoListViewModel.swift in Sources */,
 				8D0E665F2981905300FC6217 /* AppDelegate.swift in Sources */,
+				8DC455602986EFBD00E59BA5 /* TodoDetailViewController.swift in Sources */,
 				8D0E66AB2982FBC800FC6217 /* LoginModel.swift in Sources */,
 				8D4861F5298501A200BBC54C /* TodoListModel.swift in Sources */,
 				8D0E668F2982A08500FC6217 /* TodoTableViewCell.swift in Sources */,
@@ -324,6 +367,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D48620B298505CA00BBC54C /* MockNetworkService.swift in Sources */,
+				8DC45570299AB4F200E59BA5 /* TodoDetailViewModelTests.swift in Sources */,
 				8D4862012985022F00BBC54C /* TodoListViewModelTests.swift in Sources */,
 				8D0E667A2981954600FC6217 /* LoginViewModelUnitTests.swift in Sources */,
 			);
