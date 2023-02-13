@@ -6,27 +6,27 @@
 //
 
 import XCTest
+@testable import UnitTestingDemoApp
 
 class TodoDetailViewModelTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    
+    func test_when_clicking_on_a_todo_on_todoListScreen_should_fetch_todo_details_successfully() {
+        //ARRANGE
+        let viewModel = TodoDetailViewModel(todoId: 1, service: MockNetworkService())
+        
+        //ACT
+        viewModel.fetchTodo(by: viewModel.toDoId) { result in
+            switch result {
+                case .success:
+                    
+                    //ASSERT
+                    XCTAssertEqual(viewModel.todo?.id, 1)
+                    XCTAssertEqual(viewModel.todo?.userId, 01)
+                    XCTAssertEqual(viewModel.todo?.title, "delectus aut autem")
+                    XCTAssertEqual(viewModel.todo?.completed, false)
+                default:
+                    break
+            }
         }
     }
-
 }
