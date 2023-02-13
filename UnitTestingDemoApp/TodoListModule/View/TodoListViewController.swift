@@ -24,6 +24,7 @@ class TodoListViewController: UIViewController {
     
     func setupNavBar() {
         title = "My Todos"
+        navigationItem.backButtonTitle = " "
         navigationController?.navigationBar.backIndicatorImage = UIImage(systemName: "arrow.backward", withConfiguration: UIImage.SymbolConfiguration(pointSize: 16, weight: .bold))
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(systemName: "arrow.backward", withConfiguration: UIImage.SymbolConfiguration(pointSize: 16, weight: .bold))
         navigationController?.navigationBar.tintColor = .black
@@ -77,6 +78,15 @@ class TodoListViewController: UIViewController {
         alert.addAction(retryAction)
         self.present(alert, animated: true)
     }
+    
+    func pushTodoDetailViewController(todoId: Int) {
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        guard let todoDetailVC = storyboard.instantiateViewController(identifier: "TodoDetailViewController") as? TodoDetailViewController else {
+            return
+        }
+        todoDetailVC.viewModel = TodoDetailViewModel(todoId: todoId, service: NetworkManager())
+        navigationController?.pushViewController(todoDetailVC, animated: true)
+    }
 }
 
 extension TodoListViewController: UITableViewDelegate {
@@ -94,6 +104,7 @@ extension TodoListViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "TodoTableViewCell") as? TodoTableViewCell else {
              return UITableViewCell()
         }
+        cell.selectionStyle = .none
         cell.configure(with: viewModel?.todos[indexPath.row])
         if indexPath.row == 0 {
             cell.roundCorners([.layerMinXMinYCorner, .layerMaxXMinYCorner])
@@ -101,5 +112,10 @@ extension TodoListViewController: UITableViewDataSource {
             cell.roundCorners([.layerMinXMaxYCorner, .layerMaxXMaxYCorner])
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let todoId = viewModel?.todos[indexPath.row].id else { return }
+        pushTodoDetailViewController(todoId: todoId)
     }
 }

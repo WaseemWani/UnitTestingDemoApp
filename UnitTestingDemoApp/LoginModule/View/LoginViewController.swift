@@ -14,6 +14,9 @@ class LoginViewController: UIViewController {
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var loginButton: UIButton!
     
+    @IBOutlet var emailValidationErrorLabel: UILabel!
+    @IBOutlet var pswdValidationErrorLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.backButtonTitle = " "
@@ -23,12 +26,31 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginButtonAction(_ sender: Any) {
-//        guard let email = emailTextField.text, !email.isEmpty, let password = passwordTextField.text, !password.isEmpty else {
-//            emailTextField.layer.borderColor = UIColor.red.cgColor
-//            return }
-//        let result = viewModel?.login(email: email, password: password)
-//        debugPrint(result)
-        pushTodoListViewController()
+        guard let email = emailTextField.text, !email.isEmpty, let password = passwordTextField.text, !password.isEmpty else {
+            pswdValidationErrorLabel.isHidden = false
+            pswdValidationErrorLabel.text = "Please enter valid email and password"
+            return
+        }
+        pswdValidationErrorLabel.isHidden = true
+        
+        let result = viewModel?.login(email: email, password: password)
+        if let shoudlAllowLogin = result?.shouldAllowLogin, !shoudlAllowLogin {
+            showErrorMessage(result: result)
+        } else {
+            pushTodoListViewController()
+        }
+    }
+    
+    private func showErrorMessage(result: LoginResponse?) {
+        if let isValidEmail = viewModel?.isValidEmail, !isValidEmail {
+            pswdValidationErrorLabel.isHidden = true
+            emailValidationErrorLabel.isHidden = false
+            emailValidationErrorLabel.text = result?.errorMessage
+        } else if let isValidPswd = viewModel?.isValidPassword, !isValidPswd {
+            emailValidationErrorLabel.isHidden = true
+            pswdValidationErrorLabel.isHidden = false
+            pswdValidationErrorLabel.text = result?.errorMessage
+        }
     }
     
     func pushTodoListViewController() {
