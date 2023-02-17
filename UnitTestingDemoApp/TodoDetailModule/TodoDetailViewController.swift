@@ -18,6 +18,7 @@ class TodoDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Todo Details"
         populateData()
     }
     

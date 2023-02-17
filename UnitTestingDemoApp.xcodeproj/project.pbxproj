@@ -28,6 +28,7 @@
 		8DC455602986EFBD00E59BA5 /* TodoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC4555F2986EFBD00E59BA5 /* TodoDetailViewController.swift */; };
 		8DC455672986F0DA00E59BA5 /* TodoDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC455662986F0DA00E59BA5 /* TodoDetailViewModel.swift */; };
 		8DC45570299AB4F200E59BA5 /* TodoDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC4556F299AB4F200E59BA5 /* TodoDetailViewModelTests.swift */; };
+		8DC45577299D68FF00E59BA5 /* APIConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC45576299D68FF00E59BA5 /* APIConfigurator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		8DC4555F2986EFBD00E59BA5 /* TodoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailViewController.swift; sourceTree = "<group>"; };
 		8DC455662986F0DA00E59BA5 /* TodoDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailViewModel.swift; sourceTree = "<group>"; };
 		8DC4556F299AB4F200E59BA5 /* TodoDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailViewModelTests.swift; sourceTree = "<group>"; };
+		8DC45576299D68FF00E59BA5 /* APIConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfigurator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				8D0E66992982AF2100FC6217 /* NetworkManager.swift */,
+				8DC45576299D68FF00E59BA5 /* APIConfigurator.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DC45577299D68FF00E59BA5 /* APIConfigurator.swift in Sources */,
 				8D0E668629819CEF00FC6217 /* LoginViewModel.swift in Sources */,
 				8DC455672986F0DA00E59BA5 /* TodoDetailViewModel.swift in Sources */,
 				8D0E66632981905300FC6217 /* LoginViewController.swift in Sources */,
